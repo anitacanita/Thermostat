@@ -5,10 +5,12 @@
   <title>Thermostat</title>
 </head>
 <body style="font-family: helvetica">
+<form action='/' method='post'>
 <h1><span id="temperature_display"></span>℃</h1>
-<button type="button" id="increase_button">+</button>
-<button type="button" id="decrease_button">-</button>
-<button type="button" id="reset_button">RESET</button><br><br>
+<button type="submit" name="temperature" id="increase_button">+</button>
+<button type="submit" name="temperature" id="decrease_button">-</button>
+<button type="submit" name="temperature" id="reset_button">RESET</button><br><br>
+</form>
 <div style="font-size: 15px"><input type="checkbox" id='power_saving_mode' name="power_saving_mode" checked>
   Power Saving Mode
 </div>

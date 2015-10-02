@@ -8,9 +8,10 @@ $(document).ready(function() {
   $('#temperature_display').css('color', thermostat.colour);
 
   $('#increase_button').on('click', function() {
-    thermostat.increaseTemp();
-    $('#temperature_display').text(thermostat.temperature);
-    $('#temperature_display').css('color', thermostat.colour);
+      thermostat.increaseTemp();
+      $('#temperature_display').text(thermostat.temperature);
+      $('#temperature_display').css('color', thermostat.colour);
+      $('#temperature').val(thermostat.temperature)
   });
 
   $('#decrease_button').on('click', function() {
