@@ -7,9 +7,10 @@ $(document).ready(function() {
     url : "http://api.wunderground.com/api/549637f16227567b/geolookup/conditions/forecast/q/autoip.json",
     dataType : "jsonp",
     success : function(parsed_json) {
+      console.log(parsed_json);
+
       var location = parsed_json['location']['city'];
       var temp_c = parsed_json['current_observation']['temp_c'];
-      console.log(parsed_json);
       $('#weather_display').text("Current temperature in " + location + " is: " + temp_c + "℃");
 
       var forecast_image = parsed_json['current_observation']['icon_url'];
@@ -33,6 +34,26 @@ $(document).ready(function() {
         return '<img src=' + forecast_image2 + '>'; });
     }
 
+  });
+
+  $('#submit').on('click', function () {
+
+    var country = $("#country").val();
+    var city = $("#city").val();
+
+    $.ajax({
+      url : "http://api.wunderground.com/api/549637f16227567b/geolookup/conditions/q/" + country + "/" + city + ".json",
+      dataType : "jsonp",
+      success : function(parsed_json) {
+        console.log(parsed_json);
+        var location = parsed_json['location']['city'];
+        var temp_c = parsed_json['current_observation']['temp_c'];
+        $('#manual_weather_display').text("Current temperature in " + location + " is: " + temp_c + "℃");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Status: " + textStatus); alert("Error: " + errorThrown);
+      }
+    });
   });
 
 });
